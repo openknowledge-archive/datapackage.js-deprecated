@@ -1,0 +1,29 @@
+{
+  "name": "datapackage",
+  "description": "Data Packages library with special support for Simple Data Format Data Packages.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Rufus Pollock",
+    "email": "rufus.pollock@okfn.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/okfn/datapackage.js.git"
+  },
+  "bugs": {
+    "url": "http://github.com/okfn/datapackage.js/issues"
+  },
+  "engines": [
+    "node >= 0.6"
+  ],
+  "main": "./datapackage",
+  "dependencies": {
+    "request": "",
+    "csv": ""
+  },
+  "devDependencies": {
+    "supertest": "",
+    "mocha": ""
+  }
+}
