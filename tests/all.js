@@ -31,9 +31,10 @@ describe('validate', function() {
     });
   });
   it('bad remote datapackage.json not ok', function(done) {
+    this.timeout(4000);
     tools.validateUrl(sourceUrl + 'xxx', function(out) {
       assert.equal(out.valid, false);
-      assert.equal(out.errors[0].message, 'Invalid JSON');
+      assert.equal(out.errors[0].message, 'Error loading the datapackage.json file. HTTP Error code: 404');
       done();
     });
   });
@@ -96,6 +97,7 @@ describe('load', function() {
   });
 
   it('works with 404', function(done) {
+    this.timeout(4000);
     var badUrl = 'https://raw.github.com/datasets/gold-prices/master/xyz.txt';
     tools.load(badUrl, function(err, dpout) {
       assert(err!=null);
