@@ -153,6 +153,17 @@ exports.normalize = function(datapackage, url_) {
     if (!info.name) {
       info.name = _nameFromUrl(info.url);
     }
+    // upgrade for change in JTS spec - https://github.com/dataprotocols/dataprotocols/issues/60
+    if (info.schema && info.schema.fields) {
+      info.schema.fields = info.schema.fields.map(function(field) {
+        if (!field.name) {
+          field.name = field.id;
+          // TODO: (?) do we also want delete the id attribute
+          // delete field.id;
+        }
+        return field;
+      });
+    }
   });
 
   // have a stab at setting a sensible homepage

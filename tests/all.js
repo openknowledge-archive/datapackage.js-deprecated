@@ -75,6 +75,10 @@ describe('normalize', function() {
     assert.equal(dpout.description, 'Abc em');
     assert.equal(dpout.homepage, 'https://github.com/datasets/gold-prices');
   });
+  it('updates resource schema (for JTS change)', function() {
+    dpout = tools.normalize(dpin, sourceUrl);
+    assert.equal(dpout.resources[0].schema.fields[0].name, dpin.resources[0].schema.fields[0].id);
+  });
   it('checking description', function() {
     dpout = tools.normalize(dpin2, sourceUrl);
     assert.equal(dpout.description, 'Abc em\nzzz');
