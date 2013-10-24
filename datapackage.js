@@ -30,7 +30,10 @@ var dpSchema = {
   }
 };
 
-// Validate the provided Data Package JSON
+// Validate the provided DataPackage.json file
+//
+// @param raw: datapackage.json string to validate (note method will take
+// care of parsing the string and checking it is valid JSON)
 exports.validate= function(raw) {
   var env = JSV.createEnvironment();
   try {
@@ -85,8 +88,9 @@ exports.validateUrl = function(dpurl, callback) {
   });
 }
 
-// Load and normalize a datapackage.json
-// Normalize means converting relative paths to absolute paths
+// Load a datapackage.json from a URL and normalize it
+//
+// Normalize is as per `normalize`
 exports.load = function(datapackage_url, cb) {
   var base = datapackage_url.replace(/datapackage.json$/g, '');
   request(datapackage_url, function(error, response, body) {
