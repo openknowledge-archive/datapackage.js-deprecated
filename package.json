@@ -20,7 +20,9 @@
   "main": "./datapackage",
   "dependencies": {
     "request": "",
-    "csv": ""
+    "csv": "",
+    "marked": "",
+    "JSV": ""
   },
   "devDependencies": {
     "supertest": "",
