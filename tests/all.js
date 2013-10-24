@@ -74,6 +74,7 @@ describe('normalize', function() {
     assert.equal(dpout.resources[0].url, sourceUrlBase + 'data/data.csv');
     assert.equal(dpout.description, 'Abc em');
     assert.equal(dpout.homepage, 'https://github.com/datasets/gold-prices');
+    assert.equal(dpout.bugs.url, 'https://github.com/datasets/gold-prices/issues');
   });
   it('updates resource schema (for JTS change)', function() {
     dpout = tools.normalize(dpin, sourceUrl);

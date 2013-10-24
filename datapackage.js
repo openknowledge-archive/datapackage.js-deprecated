@@ -166,14 +166,23 @@ exports.normalize = function(datapackage, url_) {
     }
   });
 
-  // have a stab at setting a sensible homepage
-  if (!('homepage' in datapackage)) {
-    if (base.indexOf('raw.github.com') != -1) {
-      var offset = base.split('/').slice(3,5).join('/');
-      datapackage.homepage = 'https://github.com/' + offset;
-    } else {
-      datapackage.homepage = base;
+  // special cases for github data packages
+  if (base.indexOf('raw.github.com') != -1) {
+    var offset = base.split('/').slice(3,5).join('/');
+    var githubrepo = 'https://github.com/' + offset;
+    if (!('homepage' in datapackage)) {
+      datapackage.homepage = githubrepo;
     }
+    if (!('bugs' in datapackage)) {
+      datapackage.bugs = {
+        url: githubrepo + '/issues'
+      }
+    }
+  }
+
+  // have a stab at setting a sensible homepage if none there yet
+  if (!('homepage' in datapackage)) {
+    datapackage.homepage = base;
   }
 
   return datapackage;
