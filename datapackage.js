@@ -92,6 +92,7 @@ exports.validateUrl = function(dpurl, callback) {
 //
 // Normalize is as per `normalize`
 exports.load = function(datapackage_url, cb) {
+  var datapackage_url = exports.normalizeDataPackageUrl(datapackage_url);
   var base = datapackage_url.replace(/datapackage.json$/g, '');
   request(datapackage_url, function(error, response, body) {
     if (error) {
@@ -126,6 +127,7 @@ exports.normalizeDataPackageUrl = function(url) {
   if (url.indexOf(ghNotRaw) != -1 && url.indexOf('datapackage.json') == -1) {
     url = url.replace(ghNotRaw, 'https://raw.github.com') + '/datapackage.json';
   }
+  return url;
 };
 
 // Normalize a DataPackage DataPackage.json in various ways
