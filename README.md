@@ -11,3 +11,9 @@ Provides support for tasks like:
 [dp]: http://data.okfn.org/standards/data-package
 [sdf]: http://data.okfn.org/standards/simple-data-format
 
+## Changelog
+
+### v0.2.0
+
+* #1 - change to name on fields in resource schemas
+
