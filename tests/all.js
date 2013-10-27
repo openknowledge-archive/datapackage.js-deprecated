@@ -183,3 +183,14 @@ describe('createJsonTableSchema', function() {
     });
   });
 });
+
+describe('normalizeDataPackageUrl', function() {
+  it('works', function() {
+    gdpUrl = 'https://github.com/datasets/gdp';
+    var out = tools.normalizeDataPackageUrl(gdpUrl);
+    assert.equal(out, 'https://raw.github.com/datasets/gdp/master/datapackage.json');
+    var out = tools.normalizeDataPackageUrl('http://xyz.com/mydatapackage/');
+    assert.equal(out, 'http://xyz.com/mydatapackage/datapackage.json');
+  });
+});
+

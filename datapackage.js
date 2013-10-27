@@ -127,13 +127,17 @@ exports.normalizeDataPackageUrl = function(url) {
   if (url.indexOf(ghNotRaw) != -1 && url.indexOf('datapackage.json') == -1) {
     url = url.replace(ghNotRaw, 'https://raw.github.com') + '/master/datapackage.json';
   }
+  if (url.indexOf('datapackage.json') == -1) {
+    url = url.replace(/\/$/, '');
+    url += '/datapackage.json'
+  }
   return url;
 };
 
 // Normalize a DataPackage DataPackage.json in various ways
 // 
 // @param datapackage: datapackage object (already parsed from JSON)
-// @param url: url to datapackage.json or the root directory in which it is contained
+// @param url: [optional] url to datapackage.json or the root directory in which it is contained
 exports.normalize = function(datapackage, url_) {
   var base = url_ ? url_.replace(/datapackage.json$/g, '') : '';
   // ensure certain fields exist
