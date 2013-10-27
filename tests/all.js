@@ -119,6 +119,17 @@ describe('load', function() {
   });
 });
 
+describe('loadMany', function() {
+  it('works', function(done) {
+    gdpUrl = 'https://github.com/datasets/gdp';
+    tools.loadMany([sourceUrl, gdpUrl], function(err, dpout) {
+      assert.equal(Object.keys(dpout).length, 2);
+      assert.equal(dpout['gdp'].homepage, gdpUrl);
+      done();
+    });
+  });
+});
+
 describe('create', function() {
   it('works with basics', function(done) {
     tools.create({}, function(error, out) {

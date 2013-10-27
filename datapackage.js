@@ -122,6 +122,34 @@ exports.load = function(datapackage_url, cb) {
   });
 };
 
+// ## loadMany
+//
+// Load all the Data Packages info at the provided urls and return in one big
+// hash (keyed by Data Package names)
+//
+// @return: via the callback
+exports.loadMany = function(urls, callback) {
+  var output = {}
+    , count = urls.length
+    ;
+  function done() {
+    count--;
+    if (count == 0) {
+      callback(null, output);
+    }
+  }
+  urls.forEach(function(url) {
+    exports.load(url, function(err, dpjson) {
+      if (err) {
+        console.error(url, err)
+      } else {
+        output[dpjson.name] = dpjson;
+      }
+      done();
+    });
+  });
+}
+
 exports.normalizeDataPackageUrl = function(url) {
   var ghNotRaw = 'https://github.com';
   if (url.indexOf(ghNotRaw) != -1 && url.indexOf('datapackage.json') == -1) {
