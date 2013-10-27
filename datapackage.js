@@ -125,7 +125,7 @@ exports.load = function(datapackage_url, cb) {
 exports.normalizeDataPackageUrl = function(url) {
   var ghNotRaw = 'https://github.com';
   if (url.indexOf(ghNotRaw) != -1 && url.indexOf('datapackage.json') == -1) {
-    url = url.replace(ghNotRaw, 'https://raw.github.com') + '/datapackage.json';
+    url = url.replace(ghNotRaw, 'https://raw.github.com') + '/master/datapackage.json';
   }
   return url;
 };
