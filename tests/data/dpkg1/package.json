@@ -1,0 +1,56 @@
+{
+  "name": "dpkg1",
+  "dependencies": {
+    "dpkg2": "*"
+  },
+
+  "resources": [
+    {
+      "name": "test",
+      "schema": {
+        "fields": [
+          {"name": "a", "type": "string"},
+          {"name": "b", "type": "integer"},
+          {"name": "c", "type": "number"}
+        ]
+      },
+      "data": [
+        {"a": "a", "b": "1", "c": "1.2"},
+        {"a": "x", "b": "2", "c": "2.3"},
+        {"a": "y", "b": "3", "c": "3.4"}
+      ]
+    },
+
+    {
+      "name": "foreign",
+      "schema": {
+        "fields":[
+          {
+            "name": "date",
+            "foreignkey": {"datapackage": "dpkg2", "resource": "data", "field": "date"}
+          },
+          {
+            "name": "seq",
+            "foreignkey": {"datapackage": "dpkg2", "resource": "seq", "field": "seq"}
+          },
+          {
+            "name": "x",
+            "type": "integer"
+          }
+        ]
+      },
+      "data": [
+        {"x": 10},
+        {"x": 20},
+        {"x": 30},
+        {"x": 40}
+      ]
+    },
+
+    {
+      "name": "url",
+      "url": "https://raw.github.com/okfn/datapackage.js/master/tests/data/test.csv"
+    }
+    
+  ]
+}

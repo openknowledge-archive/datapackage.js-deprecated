@@ -7,6 +7,9 @@
     "name": "Rufus Pollock",
     "email": "rufus.pollock@okfn.org"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/okfn/datapackage.js.git"
@@ -19,10 +22,14 @@
   ],
   "main": "./datapackage",
   "dependencies": {
-    "request": "",
+    "request": "~2.27.0",
     "csv": "",
     "marked": "",
-    "JSV": ""
+    "JSV": "",
+    "merge-object-streams": "0.0.3",
+    "stream-csv-enhanced": "0.0.4",
+    "jts-validator": "0.0.2",
+    "clone": "~0.1.11"
   },
   "devDependencies": {
     "supertest": "",

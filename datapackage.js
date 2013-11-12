@@ -3,6 +3,7 @@ var JSV = require("JSV").JSV
   , request = require('request')  
   , marked = require('marked')
   , csv = require('csv')
+  , dpkgCreateReadStream = require('./lib/createReadStream')
   ;
 
 
@@ -315,6 +316,8 @@ exports.createJsonTableSchema = function(stream, cb) {
     })
     ;
 }
+
+exports.createReadStream = dpkgCreateReadStream;
 
 
 // ========================================================

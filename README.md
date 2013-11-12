@@ -14,6 +14,10 @@ Data Format Data Packages][sdf] with tabular data stored in CSV.
 npm install datapackage
 ```
 
+## Tests
+
+    npm test
+
 ## Usage
 
 The following assume you've required datapackage as follows:
@@ -67,6 +71,27 @@ Returned object has structure:
   ]
 }
 ```
+
+### Getting a stream
+
+    var stream = datapackage.createReadStream('pathTo/datapackage', datapackage, resourceName, options);
+
+
+```options```, an object with the following properties:
+
+- objectMode: (true/false) return a stream in objectMode
+- coerce: (true/false) coerce the values according to the types specified in schema
+- ldjsonify: (true/false) JSON.stringify + '\n'
+- foreignkeys: (true/false) take into account foreignkeys
+
+Notes:
+```foreignkey``` support for
+[SDF](http://dataprotocols.org/simple-data-format/) assumes that the
+datapackages have been installed by [npm](https://npmjs.org/doc/) (so
+that the package.json files of the dependecies are in
+```node_modules/``` (see
+[here](https://github.com/isaacs/npm/blob/master/doc/files/npm-folders.md))).
+
 
 ## Changelog
 
