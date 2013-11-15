@@ -79,18 +79,11 @@ Returned object has structure:
 
 ```options```, an object with the following properties:
 
-- objectMode: (true/false) return a stream in objectMode
-- coerce: (true/false) coerce the values according to the types specified in schema
-- ldjsonify: (true/false) JSON.stringify + '\n'
-- foreignkeys: (true/false) take into account foreignkeys
-
-Notes:
-```foreignkey``` support for
-[SDF](http://dataprotocols.org/simple-data-format/) assumes that the
-datapackages have been installed by [npm](https://npmjs.org/doc/) (so
-that the package.json files of the dependecies are in
-```node_modules/``` (see
-[here](https://github.com/isaacs/npm/blob/master/doc/files/npm-folders.md))).
+- objectMode: (true/false) return a stream in objectMode. In case of a JSON array, every row is emmitted separatly.
+- coerce: (true/false) coerce the values according to the types specified in schema (implies objectMode)
+- ldjsonify: (true/false) JSON.stringify + '\n' (implies objectMode)
+- foreignkeys: (true/false) take into account foreignkeys support for [SDF](http://dataprotocols.org/simple-data-format/) (implies objectMode). This option assumes that the
+datapackages have been installed by [npm](https://npmjs.org/doc/) (so that the package.json files of the dependecies are in ```node_modules/``` (see [here](https://github.com/isaacs/npm/blob/master/doc/files/npm-folders.md))).
 
 
 ## Changelog

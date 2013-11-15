@@ -28,8 +28,9 @@
     "JSV": "",
     "merge-object-streams": "0.0.3",
     "stream-csv-enhanced": "0.0.4",
-    "jts-validator": "0.0.2",
-    "clone": "~0.1.11"
+    "jts-validator": "0.0.3",
+    "clone": "~0.1.11",
+    "split": "~0.2.10"
   },
   "devDependencies": {
     "supertest": "",

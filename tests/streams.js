@@ -110,23 +110,19 @@ describe('streams', function(){
   });
 
 
-  it('should stream an SDF resource in objectMode with foreignkeys and transform the result in line delimited json (as Buffer)', function(done){
+  it('should stream an SDF resource as line delimited json (as Buffer)', function(done){
     var expected = [
-      {x: 10, date: '2012-08-02', seq: '5'},
-      {x: 20, date: '2012-08-16', seq: 'null'},
-      {x: 30, date: '2012-09-20', seq: '111'},
-      {x: 40, date: '2012-10-04', seq: '148'}
-    ].map(function(x){return new Buffer(JSON.stringify(x) + '\n');});
+      {"a": "a", "b": "1", "c": "1.2"},
+      {"a": "x", "b": "2", "c": "2.3"},
+      {"a": "y", "b": "3", "c": "3.4"}
+    ].map(function(x){return new Buffer(JSON.stringify(x) + '\n');});;
 
-    var s = createReadStream(dpkgRoot, dpkg, 'foreign', {foreignkeys:true, ldjsonify:true});
+    var s = createReadStream(dpkgRoot, dpkg, 'test', {ldjsonify:true});
     s.on('error', function(err){ throw err; });
-
     var counter = 0;
-    s.on('data', function(data){ 
-      assert.deepEqual(data, expected[counter++]); 
-    });
+    s.on('data', function(data){ assert.deepEqual(data, expected[counter++]); });
 
-    s.on('end', done);       
+    s.on('end', done);
   });
 
 
