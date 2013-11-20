@@ -8,7 +8,7 @@
     "email": "rufus.pollock@okfn.org"
   },
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/.bin/mocha tests"
   },
   "repository": {
     "type": "git",
@@ -27,10 +27,10 @@
     "marked": "",
     "JSV": "",
     "merge-object-streams": "0.0.3",
-    "stream-csv-enhanced": "0.0.4",
     "jts-validator": "0.0.3",
     "clone": "~0.1.11",
-    "split": "~0.2.10"
+    "split": "~0.2.10",
+    "binary-csv": "~0.1.3"
   },
   "devDependencies": {
     "supertest": "",
