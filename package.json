@@ -27,7 +27,7 @@
     "marked": "",
     "JSV": "",
     "merge-object-streams": "0.0.3",
-    "jts-validator": "0.0.3",
+    "jts-validator": "0.0.4",
     "clone": "~0.1.11",
     "split": "~0.2.10",
     "binary-csv": "~0.1.3"
